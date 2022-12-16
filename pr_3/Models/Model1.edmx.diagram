@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e0231d63a7484d908cabd1ce3330af5a" Name="Diagram1">
+        <EntityTypeShape EntityType="UVD_BDModel.article" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.award" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.crime" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.department" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.gender" Width="1.5" PointX="1.5" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.officer" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.rank" Width="1.5" PointX="3.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.register" Width="1.5" PointX="1.5" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.role" Width="1.5" PointX="1.5" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.search" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.type_of_search" Width="1.5" PointX="1.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.user" Width="1.5" PointX="3.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UVD_BDModel.vacancy" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <AssociationConnector Association="UVD_BDModel.FK_crime_article" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_officer_award" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_crime_department" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_crime_search" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_officer_department" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_vacancy_department" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_register_gender1" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_officer_rank" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_officer_user" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_register_role1" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_user_register1" ManuallyRouted="false" />
+        <AssociationConnector Association="UVD_BDModel.FK_search_type_of_search" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

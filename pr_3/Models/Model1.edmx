@@ -1,0 +1,931 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище UVD_BDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="ID_article" />
+          </Key>
+          <Property Name="ID_article" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="Link" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="award">
+          <Key>
+            <PropertyRef Name="ID_award" />
+          </Key>
+          <Property Name="ID_award" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Issued_by" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Year" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="crime">
+          <Key>
+            <PropertyRef Name="ID_crime" />
+          </Key>
+          <Property Name="ID_crime" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="Date_and_time" Type="datetime" Nullable="false" />
+          <Property Name="ID_article" Type="int" Nullable="false" />
+          <Property Name="Suspect" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Victims" Type="text" Nullable="false" />
+          <Property Name="Adress" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_department" Type="int" Nullable="false" />
+          <Property Name="ID_search" Type="int" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="ID_department" />
+          </Key>
+          <Property Name="ID_department" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adress" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Duty_station" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telephone_number" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="ID_gender" />
+          </Key>
+          <Property Name="ID_gender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="officer">
+          <Key>
+            <PropertyRef Name="ID_officer" />
+          </Key>
+          <Property Name="ID_officer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_Name" Type="nchar" MaxLength="50" />
+          <Property Name="Service_exp" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="ID_department" Type="int" Nullable="false" />
+          <Property Name="ID_rank" Type="int" Nullable="false" />
+          <Property Name="ID_award" Type="int" />
+          <Property Name="Telephone_number" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rank">
+          <Key>
+            <PropertyRef Name="ID_rank" />
+          </Key>
+          <Property Name="ID_rank" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="ID_register" />
+          </Key>
+          <Property Name="ID_register" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_gender" Type="int" Nullable="false" />
+          <Property Name="ID_role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="search">
+          <Key>
+            <PropertyRef Name="ID_search" />
+          </Key>
+          <Property Name="ID_search" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_type" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_name" Type="nchar" MaxLength="50" />
+          <Property Name="Birthday" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adress" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_seen" Type="datetime" Nullable="false" />
+          <Property Name="Contact_number" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="type_of_search">
+          <Key>
+            <PropertyRef Name="ID_type" />
+          </Key>
+          <Property Name="ID_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID_user" />
+          </Key>
+          <Property Name="ID_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telephone_number" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_register" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vacancy">
+          <Key>
+            <PropertyRef Name="ID_vacancy" />
+          </Key>
+          <Property Name="ID_vacancy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="Payment" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_department" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_crime_article">
+          <End Role="article" Type="Self.article" Multiplicity="1" />
+          <End Role="crime" Type="Self.crime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="article">
+              <PropertyRef Name="ID_article" />
+            </Principal>
+            <Dependent Role="crime">
+              <PropertyRef Name="ID_article" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_crime_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="crime" Type="Self.crime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="ID_department" />
+            </Principal>
+            <Dependent Role="crime">
+              <PropertyRef Name="ID_department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_crime_search">
+          <End Role="search" Type="Self.search" Multiplicity="0..1" />
+          <End Role="crime" Type="Self.crime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="search">
+              <PropertyRef Name="ID_search" />
+            </Principal>
+            <Dependent Role="crime">
+              <PropertyRef Name="ID_search" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_officer_award">
+          <End Role="award" Type="Self.award" Multiplicity="0..1" />
+          <End Role="officer" Type="Self.officer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="award">
+              <PropertyRef Name="ID_award" />
+            </Principal>
+            <Dependent Role="officer">
+              <PropertyRef Name="ID_award" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_officer_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="officer" Type="Self.officer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="ID_department" />
+            </Principal>
+            <Dependent Role="officer">
+              <PropertyRef Name="ID_department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_officer_rank">
+          <End Role="rank" Type="Self.rank" Multiplicity="1" />
+          <End Role="officer" Type="Self.officer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rank">
+              <PropertyRef Name="ID_rank" />
+            </Principal>
+            <Dependent Role="officer">
+              <PropertyRef Name="ID_rank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_officer_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="officer" Type="Self.officer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID_user" />
+            </Principal>
+            <Dependent Role="officer">
+              <PropertyRef Name="ID_officer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_register_gender1">
+          <End Role="gender" Type="Self.gender" Multiplicity="1" />
+          <End Role="register" Type="Self.register" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="ID_gender" />
+            </Principal>
+            <Dependent Role="register">
+              <PropertyRef Name="ID_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_register_role1">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="register" Type="Self.register" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="register">
+              <PropertyRef Name="ID_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_search_type_of_search">
+          <End Role="type_of_search" Type="Self.type_of_search" Multiplicity="1" />
+          <End Role="search" Type="Self.search" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_of_search">
+              <PropertyRef Name="ID_type" />
+            </Principal>
+            <Dependent Role="search">
+              <PropertyRef Name="ID_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_register1">
+          <End Role="register" Type="Self.register" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="register">
+              <PropertyRef Name="ID_register" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="ID_register" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacancy_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="vacancy" Type="Self.vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="ID_department" />
+            </Principal>
+            <Dependent Role="vacancy">
+              <PropertyRef Name="ID_department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище UVD_BDModelContainer">
+          <EntitySet Name="article" EntityType="Self.article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="award" EntityType="Self.award" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="crime" EntityType="Self.crime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gender" EntityType="Self.gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="officer" EntityType="Self.officer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rank" EntityType="Self.rank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="search" EntityType="Self.search" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_of_search" EntityType="Self.type_of_search" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vacancy" EntityType="Self.vacancy" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_crime_article" Association="Self.FK_crime_article">
+            <End Role="article" EntitySet="article" />
+            <End Role="crime" EntitySet="crime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_crime_department" Association="Self.FK_crime_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="crime" EntitySet="crime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_crime_search" Association="Self.FK_crime_search">
+            <End Role="search" EntitySet="search" />
+            <End Role="crime" EntitySet="crime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_officer_award" Association="Self.FK_officer_award">
+            <End Role="award" EntitySet="award" />
+            <End Role="officer" EntitySet="officer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_officer_department" Association="Self.FK_officer_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="officer" EntitySet="officer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_officer_rank" Association="Self.FK_officer_rank">
+            <End Role="rank" EntitySet="rank" />
+            <End Role="officer" EntitySet="officer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_officer_user" Association="Self.FK_officer_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="officer" EntitySet="officer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_register_gender1" Association="Self.FK_register_gender1">
+            <End Role="gender" EntitySet="gender" />
+            <End Role="register" EntitySet="register" />
+          </AssociationSet>
+          <AssociationSet Name="FK_register_role1" Association="Self.FK_register_role1">
+            <End Role="role" EntitySet="role" />
+            <End Role="register" EntitySet="register" />
+          </AssociationSet>
+          <AssociationSet Name="FK_search_type_of_search" Association="Self.FK_search_type_of_search">
+            <End Role="type_of_search" EntitySet="type_of_search" />
+            <End Role="search" EntitySet="search" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_register1" Association="Self.FK_user_register1">
+            <End Role="register" EntitySet="register" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacancy_department" Association="Self.FK_vacancy_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="vacancy" EntitySet="vacancy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UVD_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="ID_article" />
+          </Key>
+          <Property Name="ID_article" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Link" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="crime" Relationship="Self.FK_crime_article" FromRole="article" ToRole="crime" />
+        </EntityType>
+        <EntityType Name="award">
+          <Key>
+            <PropertyRef Name="ID_award" />
+          </Key>
+          <Property Name="ID_award" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Issued_by" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="officer" Relationship="Self.FK_officer_award" FromRole="award" ToRole="officer" />
+        </EntityType>
+        <EntityType Name="crime">
+          <Key>
+            <PropertyRef Name="ID_crime" />
+          </Key>
+          <Property Name="ID_crime" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date_and_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_article" Type="Int32" Nullable="false" />
+          <Property Name="Suspect" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Victims" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ID_department" Type="Int32" Nullable="false" />
+          <Property Name="ID_search" Type="Int32" />
+          <NavigationProperty Name="article" Relationship="Self.FK_crime_article" FromRole="crime" ToRole="article" />
+          <NavigationProperty Name="department" Relationship="Self.FK_crime_department" FromRole="crime" ToRole="department" />
+          <NavigationProperty Name="search" Relationship="Self.FK_crime_search" FromRole="crime" ToRole="search" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="ID_department" />
+          </Key>
+          <Property Name="ID_department" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Duty_station" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Telephone_number" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="crime" Relationship="Self.FK_crime_department" FromRole="department" ToRole="crime" />
+          <NavigationProperty Name="officer" Relationship="Self.FK_officer_department" FromRole="department" ToRole="officer" />
+          <NavigationProperty Name="vacancy" Relationship="Self.FK_vacancy_department" FromRole="department" ToRole="vacancy" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="ID_gender" />
+          </Key>
+          <Property Name="ID_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="register" Relationship="Self.FK_register_gender1" FromRole="gender" ToRole="register" />
+        </EntityType>
+        <EntityType Name="officer">
+          <Key>
+            <PropertyRef Name="ID_officer" />
+          </Key>
+          <Property Name="ID_officer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Service_exp" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_department" Type="Int32" Nullable="false" />
+          <Property Name="ID_rank" Type="Int32" Nullable="false" />
+          <Property Name="ID_award" Type="Int32" />
+          <Property Name="Telephone_number" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="award" Relationship="Self.FK_officer_award" FromRole="officer" ToRole="award" />
+          <NavigationProperty Name="department" Relationship="Self.FK_officer_department" FromRole="officer" ToRole="department" />
+          <NavigationProperty Name="rank" Relationship="Self.FK_officer_rank" FromRole="officer" ToRole="rank" />
+          <NavigationProperty Name="user" Relationship="Self.FK_officer_user" FromRole="officer" ToRole="user" />
+        </EntityType>
+        <EntityType Name="rank">
+          <Key>
+            <PropertyRef Name="ID_rank" />
+          </Key>
+          <Property Name="ID_rank" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="officer" Relationship="Self.FK_officer_rank" FromRole="rank" ToRole="officer" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="ID_register" />
+          </Key>
+          <Property Name="ID_register" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_gender" Type="Int32" Nullable="false" />
+          <Property Name="ID_role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gender" Relationship="Self.FK_register_gender1" FromRole="register" ToRole="gender" />
+          <NavigationProperty Name="role" Relationship="Self.FK_register_role1" FromRole="register" ToRole="role" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_register1" FromRole="register" ToRole="user" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="register" Relationship="Self.FK_register_role1" FromRole="role" ToRole="register" />
+        </EntityType>
+        <EntityType Name="search">
+          <Key>
+            <PropertyRef Name="ID_search" />
+          </Key>
+          <Property Name="ID_search" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_type" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Birthday" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Last_seen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Contact_number" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="crime" Relationship="Self.FK_crime_search" FromRole="search" ToRole="crime" />
+          <NavigationProperty Name="type_of_search" Relationship="Self.FK_search_type_of_search" FromRole="search" ToRole="type_of_search" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="type_of_search">
+          <Key>
+            <PropertyRef Name="ID_type" />
+          </Key>
+          <Property Name="ID_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="search" Relationship="Self.FK_search_type_of_search" FromRole="type_of_search" ToRole="search" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID_user" />
+          </Key>
+          <Property Name="ID_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Telephone_number" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ID_register" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="officer" Relationship="Self.FK_officer_user" FromRole="user" ToRole="officer" />
+          <NavigationProperty Name="register" Relationship="Self.FK_user_register1" FromRole="user" ToRole="register" />
+        </EntityType>
+        <EntityType Name="vacancy">
+          <Key>
+            <PropertyRef Name="ID_vacancy" />
+          </Key>
+          <Property Name="ID_vacancy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Payment" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ID_department" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="department" Relationship="Self.FK_vacancy_department" FromRole="vacancy" ToRole="department" />
+        </EntityType>
+        <Association Name="FK_crime_article">
+          <End Role="article" Type="Self.article" Multiplicity="1" />
+          <End Role="crime" Type="Self.crime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="article">
+              <PropertyRef Name="ID_article" />
+            </Principal>
+            <Dependent Role="crime">
+              <PropertyRef Name="ID_article" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_officer_award">
+          <End Role="award" Type="Self.award" Multiplicity="0..1" />
+          <End Role="officer" Type="Self.officer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="award">
+              <PropertyRef Name="ID_award" />
+            </Principal>
+            <Dependent Role="officer">
+              <PropertyRef Name="ID_award" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_crime_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="crime" Type="Self.crime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="ID_department" />
+            </Principal>
+            <Dependent Role="crime">
+              <PropertyRef Name="ID_department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_crime_search">
+          <End Role="search" Type="Self.search" Multiplicity="0..1" />
+          <End Role="crime" Type="Self.crime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="search">
+              <PropertyRef Name="ID_search" />
+            </Principal>
+            <Dependent Role="crime">
+              <PropertyRef Name="ID_search" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_officer_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="officer" Type="Self.officer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="ID_department" />
+            </Principal>
+            <Dependent Role="officer">
+              <PropertyRef Name="ID_department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacancy_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="vacancy" Type="Self.vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="ID_department" />
+            </Principal>
+            <Dependent Role="vacancy">
+              <PropertyRef Name="ID_department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_register_gender1">
+          <End Role="gender" Type="Self.gender" Multiplicity="1" />
+          <End Role="register" Type="Self.register" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="ID_gender" />
+            </Principal>
+            <Dependent Role="register">
+              <PropertyRef Name="ID_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_officer_rank">
+          <End Role="rank" Type="Self.rank" Multiplicity="1" />
+          <End Role="officer" Type="Self.officer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rank">
+              <PropertyRef Name="ID_rank" />
+            </Principal>
+            <Dependent Role="officer">
+              <PropertyRef Name="ID_rank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_officer_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="officer" Type="Self.officer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID_user" />
+            </Principal>
+            <Dependent Role="officer">
+              <PropertyRef Name="ID_officer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_register_role1">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="register" Type="Self.register" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="register">
+              <PropertyRef Name="ID_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_register1">
+          <End Role="register" Type="Self.register" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="register">
+              <PropertyRef Name="ID_register" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="ID_register" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_search_type_of_search">
+          <End Role="type_of_search" Type="Self.type_of_search" Multiplicity="1" />
+          <End Role="search" Type="Self.search" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_of_search">
+              <PropertyRef Name="ID_type" />
+            </Principal>
+            <Dependent Role="search">
+              <PropertyRef Name="ID_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UVD_BDEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="article" EntityType="Self.article" />
+          <EntitySet Name="award" EntityType="Self.award" />
+          <EntitySet Name="crime" EntityType="Self.crime" />
+          <EntitySet Name="department" EntityType="Self.department" />
+          <EntitySet Name="gender" EntityType="Self.gender" />
+          <EntitySet Name="officer" EntityType="Self.officer" />
+          <EntitySet Name="rank" EntityType="Self.rank" />
+          <EntitySet Name="register" EntityType="Self.register" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="search" EntityType="Self.search" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="type_of_search" EntityType="Self.type_of_search" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="vacancy" EntityType="Self.vacancy" />
+          <AssociationSet Name="FK_crime_article" Association="Self.FK_crime_article">
+            <End Role="article" EntitySet="article" />
+            <End Role="crime" EntitySet="crime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_officer_award" Association="Self.FK_officer_award">
+            <End Role="award" EntitySet="award" />
+            <End Role="officer" EntitySet="officer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_crime_department" Association="Self.FK_crime_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="crime" EntitySet="crime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_crime_search" Association="Self.FK_crime_search">
+            <End Role="search" EntitySet="search" />
+            <End Role="crime" EntitySet="crime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_officer_department" Association="Self.FK_officer_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="officer" EntitySet="officer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacancy_department" Association="Self.FK_vacancy_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="vacancy" EntitySet="vacancy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_register_gender1" Association="Self.FK_register_gender1">
+            <End Role="gender" EntitySet="gender" />
+            <End Role="register" EntitySet="register" />
+          </AssociationSet>
+          <AssociationSet Name="FK_officer_rank" Association="Self.FK_officer_rank">
+            <End Role="rank" EntitySet="rank" />
+            <End Role="officer" EntitySet="officer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_officer_user" Association="Self.FK_officer_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="officer" EntitySet="officer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_register_role1" Association="Self.FK_register_role1">
+            <End Role="role" EntitySet="role" />
+            <End Role="register" EntitySet="register" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_register1" Association="Self.FK_user_register1">
+            <End Role="register" EntitySet="register" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_search_type_of_search" Association="Self.FK_search_type_of_search">
+            <End Role="type_of_search" EntitySet="type_of_search" />
+            <End Role="search" EntitySet="search" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UVD_BDModelContainer" CdmEntityContainer="UVD_BDEntities4">
+          <EntitySetMapping Name="article">
+            <EntityTypeMapping TypeName="UVD_BDModel.article">
+              <MappingFragment StoreEntitySet="article">
+                <ScalarProperty Name="ID_article" ColumnName="ID_article" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="award">
+            <EntityTypeMapping TypeName="UVD_BDModel.award">
+              <MappingFragment StoreEntitySet="award">
+                <ScalarProperty Name="ID_award" ColumnName="ID_award" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Issued_by" ColumnName="Issued_by" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="crime">
+            <EntityTypeMapping TypeName="UVD_BDModel.crime">
+              <MappingFragment StoreEntitySet="crime">
+                <ScalarProperty Name="ID_crime" ColumnName="ID_crime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date_and_time" ColumnName="Date_and_time" />
+                <ScalarProperty Name="ID_article" ColumnName="ID_article" />
+                <ScalarProperty Name="Suspect" ColumnName="Suspect" />
+                <ScalarProperty Name="Victims" ColumnName="Victims" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="ID_department" ColumnName="ID_department" />
+                <ScalarProperty Name="ID_search" ColumnName="ID_search" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="department">
+            <EntityTypeMapping TypeName="UVD_BDModel.department">
+              <MappingFragment StoreEntitySet="department">
+                <ScalarProperty Name="ID_department" ColumnName="ID_department" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Duty_station" ColumnName="Duty_station" />
+                <ScalarProperty Name="Telephone_number" ColumnName="Telephone_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gender">
+            <EntityTypeMapping TypeName="UVD_BDModel.gender">
+              <MappingFragment StoreEntitySet="gender">
+                <ScalarProperty Name="ID_gender" ColumnName="ID_gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="officer">
+            <EntityTypeMapping TypeName="UVD_BDModel.officer">
+              <MappingFragment StoreEntitySet="officer">
+                <ScalarProperty Name="ID_officer" ColumnName="ID_officer" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Service_exp" ColumnName="Service_exp" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="ID_department" ColumnName="ID_department" />
+                <ScalarProperty Name="ID_rank" ColumnName="ID_rank" />
+                <ScalarProperty Name="ID_award" ColumnName="ID_award" />
+                <ScalarProperty Name="Telephone_number" ColumnName="Telephone_number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rank">
+            <EntityTypeMapping TypeName="UVD_BDModel.rank">
+              <MappingFragment StoreEntitySet="rank">
+                <ScalarProperty Name="ID_rank" ColumnName="ID_rank" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="register">
+            <EntityTypeMapping TypeName="UVD_BDModel.register">
+              <MappingFragment StoreEntitySet="register">
+                <ScalarProperty Name="ID_register" ColumnName="ID_register" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="ID_gender" ColumnName="ID_gender" />
+                <ScalarProperty Name="ID_role" ColumnName="ID_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="UVD_BDModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="ID_role" ColumnName="ID_role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="search">
+            <EntityTypeMapping TypeName="UVD_BDModel.search">
+              <MappingFragment StoreEntitySet="search">
+                <ScalarProperty Name="ID_search" ColumnName="ID_search" />
+                <ScalarProperty Name="ID_type" ColumnName="ID_type" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Last_seen" ColumnName="Last_seen" />
+                <ScalarProperty Name="Contact_number" ColumnName="Contact_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="UVD_BDModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_of_search">
+            <EntityTypeMapping TypeName="UVD_BDModel.type_of_search">
+              <MappingFragment StoreEntitySet="type_of_search">
+                <ScalarProperty Name="ID_type" ColumnName="ID_type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="UVD_BDModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Telephone_number" ColumnName="Telephone_number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID_register" ColumnName="ID_register" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vacancy">
+            <EntityTypeMapping TypeName="UVD_BDModel.vacancy">
+              <MappingFragment StoreEntitySet="vacancy">
+                <ScalarProperty Name="ID_vacancy" ColumnName="ID_vacancy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="ID_department" ColumnName="ID_department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
